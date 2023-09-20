@@ -1,0 +1,36 @@
+.newTask {
+  display: grid;
+  grid-template-columns: 1fr 5.625rem;
+  gap: 0.5rem;
+
+  margin-top: -3.5rem;
+}
+
+.newTask input {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 0;
+  background: var(--gray-500);
+  color: var(--gray-100);
+}
+
+.newTask button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 0;
+  background: var(--blue-dark);
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.4;
+  transitions: background-color 0.2s;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.newTask button:not(:disabled):hover {
+  background: var(--blue);
+}
