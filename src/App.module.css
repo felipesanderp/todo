@@ -1,4 +1,56 @@
 .wrapper {
   max-width: 46rem;
   margin: 2rem auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.tasksInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.tasksCreated {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tasksCreated p {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.tasksCreated span {
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  border-radius: 999px;
+  background: var(--gray-400);
+  padding: 0.125rem 0.5rem;
+}
+
+.tasksCompleted {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tasksCompleted p {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--purple);
+}
+
+.tasksCompleted span {
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  border-radius: 999px;
+  background: var(--gray-400);
+  padding: 0.125rem 0.5rem;
 }

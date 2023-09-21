@@ -14,9 +14,19 @@ export function App() {
       <div className={styles.wrapper}>
         <NewTaskForm />
 
-        <div>
-          <NoTasks />
+        <div className={styles.tasksInfo}>
+          <div className={styles.tasksCreated}>
+            <p>Tarefas criadas</p>
+            <span>0</span>
+          </div>
+
+          <div className={styles.tasksCompleted}>
+            <p>Concluídas</p>
+            <span>0</span>
+          </div>
         </div>
+
+        <NoTasks />
       </div>
     </div>
   )
