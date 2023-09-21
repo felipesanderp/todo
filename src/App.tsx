@@ -1,9 +1,10 @@
 import './global.css';
 
 import { Header } from './components/Header';
+import { NewTaskForm } from './components/NewTaskForm';
+import { NoTasks } from './components/NoTasks';
 
 import styles from './App.module.css'
-import { NewTaskForm } from './components/NewTaskForm';
 
 export function App() {
   return (
@@ -12,6 +13,10 @@ export function App() {
 
       <div className={styles.wrapper}>
         <NewTaskForm />
+
+        <div>
+          <NoTasks />
+        </div>
       </div>
     </div>
   )
