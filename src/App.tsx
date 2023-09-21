@@ -5,6 +5,7 @@ import { NewTaskForm } from './components/NewTaskForm';
 import { NoTasks } from './components/NoTasks';
 
 import styles from './App.module.css'
+import { Tasks } from './components/Tasks';
 
 export function App() {
   return (
@@ -26,7 +27,8 @@ export function App() {
           </div>
         </div>
 
-        <NoTasks />
+        {/* <NoTasks /> */}
+        <Tasks />
       </div>
     </div>
   )

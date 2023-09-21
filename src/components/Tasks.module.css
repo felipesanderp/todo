@@ -1,0 +1,62 @@
+.tasks {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: 1rem;
+  background: var(--gray-500);
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+}
+
+.tasks input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  font: inherit;
+  color: currentColor;
+  background-color: var(--gray-500);
+  border: 0.15rem solid var(--blue);
+  border-radius: 50%;
+
+  display: grid;
+  place-content: center;
+}
+
+.tasks input[type="radio"]:checked {
+  border: 0;
+  background-color: var(--purple-dark);
+}
+
+.tasks input[type="radio"]:checked + p {
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.tasks p {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--gray-100);
+}
+
+.tasks button {
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 2px;
+
+  padding: 0.15rem;
+}
+
+.tasks button:not(:disabled):hover {
+  background: var(--gray-400);
+  border-radius: 4px;
+  color: var(--danger);
+}
