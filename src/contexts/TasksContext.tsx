@@ -68,8 +68,6 @@ export function TasksProvider({ children }: TasksProviderProps) {
     }
   }
 
-  
-
   useEffect(() => {
     const countIsCompleted = () => {
       const getTasks = [...tasks]
