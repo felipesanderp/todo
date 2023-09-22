@@ -11,7 +11,7 @@ import { TasksContext } from './contexts/TasksContext';
 import { useContext } from 'react';
 
 export function App() {
-  const { tasks } = useContext(TasksContext)
+  const { tasks, totalIsCompleted } = useContext(TasksContext)
 
   return (
     <div>
@@ -23,12 +23,14 @@ export function App() {
         <div className={styles.tasksInfo}>
           <div className={styles.tasksCreated}>
             <p>Tarefas criadas</p>
-            <span>0</span>
+            <span>{tasks.length}</span>
           </div>
 
           <div className={styles.tasksCompleted}>
             <p>Concluídas</p>
-            <span>0</span>
+            <span>
+              {totalIsCompleted} de {tasks.length}
+            </span>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface Task {
   content: string
@@ -14,6 +14,7 @@ interface TasksContextData {
   addTask: (task: Task) => void
   removeTask: (content: string) => void
   completeTask: (content: string) => void
+  totalIsCompleted: number
 }
 
 export const TasksContext = createContext({} as TasksContextData)
@@ -28,6 +29,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
     return [] as Task[]
   })
+  const [totalIsCompleted, setTotalIsCompleted] = useState(0)
 
   const addTask = (task: Task) => {
     const getTasks = [...tasks]
@@ -66,8 +68,25 @@ export function TasksProvider({ children }: TasksProviderProps) {
     }
   }
 
+  
+
+  useEffect(() => {
+    const countIsCompleted = () => {
+      const getTasks = [...tasks]
+      const totalIsCompleted = getTasks.filter(task => task.isCompleted === true)
+  
+      if (totalIsCompleted.length < 0) {
+        return null
+      }
+  
+      setTotalIsCompleted(totalIsCompleted.length)
+    }
+    
+    countIsCompleted()
+  }, [tasks])
+
   return (
-    <TasksContext.Provider value={{ tasks, addTask, removeTask, completeTask }}>
+    <TasksContext.Provider value={{ tasks, addTask, removeTask, completeTask, totalIsCompleted }}>
       {children}
     </TasksContext.Provider>
   )
