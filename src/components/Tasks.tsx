@@ -5,7 +5,6 @@ import { TasksContext } from '../contexts/TasksContext'
 
 import styles from './Tasks.module.css'
 
-
 interface TasksProps {
   content: string
   isCompleted: boolean
@@ -24,15 +23,15 @@ export function Tasks({ content, isCompleted }: TasksProps) {
 
   return (
     <div className={styles.tasks}>
-      <input 
-        type="radio" 
-        value={content} 
+      <input
+        type="radio"
+        value={content}
         name={content}
         id={content}
         onChange={handleRadioInputChange}
         checked={isCompleted}
       />
-      <label htmlFor={content} id='label' />
+      <label htmlFor={content} id="label" />
 
       <p className={isCompleted ? styles.taskCompleted : styles.content}>
         {content}

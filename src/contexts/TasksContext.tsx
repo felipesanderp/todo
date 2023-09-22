@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from 'react'
 
 interface Task {
   content: string
@@ -21,7 +21,7 @@ export const TasksContext = createContext({} as TasksContextData)
 
 export function TasksProvider({ children }: TasksProviderProps) {
   const [tasks, setTasks] = useState<Task[]>(() => {
-    const storagedTasks = localStorage.getItem('@todo:tasks');
+    const storagedTasks = localStorage.getItem('@todo:tasks')
 
     if (storagedTasks) {
       return JSON.parse(storagedTasks)
@@ -40,7 +40,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
     getTasks.push(newTask)
 
-    const sortedBtIsCompleted = getTasks.sort(value => {
+    const sortedBtIsCompleted = getTasks.sort((value) => {
       return value.isCompleted ? 1 : -1
     })
 
@@ -50,7 +50,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
   const removeTask = (content: string) => {
     const getTasks = [...tasks]
-    const taskIndex = getTasks.findIndex(task => task.content === content)
+    const taskIndex = getTasks.findIndex((task) => task.content === content)
 
     if (taskIndex >= 0) {
       getTasks.splice(taskIndex, 1)
@@ -62,12 +62,12 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
   const completeTask = (content: string) => {
     const getTasks = [...tasks]
-    const taskIndex = getTasks.findIndex(task => task.content === content)
+    const taskIndex = getTasks.findIndex((task) => task.content === content)
 
     if (taskIndex >= 0) {
       getTasks[taskIndex].isCompleted = true
 
-      const sortedBtIsCompleted = getTasks.sort(value => {
+      const sortedBtIsCompleted = getTasks.sort((value) => {
         return value.isCompleted ? 1 : -1
       })
 
@@ -79,20 +79,24 @@ export function TasksProvider({ children }: TasksProviderProps) {
   useEffect(() => {
     const countIsCompleted = () => {
       const getTasks = [...tasks]
-      const totalIsCompleted = getTasks.filter(task => task.isCompleted === true)
-  
+      const totalIsCompleted = getTasks.filter(
+        (task) => task.isCompleted === true,
+      )
+
       if (totalIsCompleted.length < 0) {
         return null
       }
-  
+
       setTotalIsCompleted(totalIsCompleted.length)
     }
-    
+
     countIsCompleted()
   }, [tasks])
 
   return (
-    <TasksContext.Provider value={{ tasks, addTask, removeTask, completeTask, totalIsCompleted }}>
+    <TasksContext.Provider
+      value={{ tasks, addTask, removeTask, completeTask, totalIsCompleted }}
+    >
       {children}
     </TasksContext.Provider>
   )

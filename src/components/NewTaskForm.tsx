@@ -12,7 +12,7 @@ export function NewTaskForm() {
 
   function handleAddNewTask(event: FormEvent) {
     event.preventDefault()
-    
+
     addTask({
       content: newTaskText,
       isCompleted: false,
@@ -27,15 +27,15 @@ export function NewTaskForm() {
 
   return (
     <form onSubmit={handleAddNewTask} className={styles.newTask}>
-      <input 
-        type="text" 
-        placeholder='Adicionar uma nova tarefa'
+      <input
+        type="text"
+        placeholder="Adicionar uma nova tarefa"
         value={newTaskText}
         onChange={handleNewTaskChange}
       />
 
-      <button type='submit'>
-        Criar 
+      <button type="submit">
+        Criar
         <PlusCircle size={16} />
       </button>
     </form>

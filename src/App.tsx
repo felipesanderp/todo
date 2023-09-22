@@ -1,14 +1,14 @@
-import './global.css';
+import './global.css'
 
-import { Header } from './components/Header';
-import { NewTaskForm } from './components/NewTaskForm';
-import { NoTasks } from './components/NoTasks';
-import { Tasks } from './components/Tasks';
+import { Header } from './components/Header'
+import { NewTaskForm } from './components/NewTaskForm'
+import { NoTasks } from './components/NoTasks'
+import { Tasks } from './components/Tasks'
 
 import styles from './App.module.css'
 
-import { TasksContext } from './contexts/TasksContext';
-import { useContext } from 'react';
+import { TasksContext } from './contexts/TasksContext'
+import { useContext } from 'react'
 
 export function App() {
   const { tasks, totalIsCompleted } = useContext(TasksContext)
@@ -38,7 +38,7 @@ export function App() {
           <div>
             {tasks.map((task) => {
               return (
-                <Tasks 
+                <Tasks
                   key={task.content}
                   content={task.content}
                   isCompleted={task.isCompleted}
