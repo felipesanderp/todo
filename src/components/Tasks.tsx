@@ -4,8 +4,9 @@ import styles from './Tasks.module.css'
 export function Tasks() {
   return (
     <div className={styles.tasks}>
-      <input type="radio" name="" id="" />
-      
+      <input type="radio" name="radioInput" id="radioInput" />
+      <label htmlFor="radioInput" id='label' />
+
       <p>
         Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
       </p>
