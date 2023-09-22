@@ -12,10 +12,14 @@ interface TasksProps {
 }
 
 export function Tasks({ content, isCompleted }: TasksProps) {
-  const { completeTask } = useContext(TasksContext)
+  const { completeTask, removeTask } = useContext(TasksContext)
 
   function handleRadioInputChange(event: ChangeEvent<HTMLInputElement>) {
     completeTask(event.target.value)
+  }
+
+  function handleRemoveTask(content: string) {
+    removeTask(content)
   }
 
   return (
@@ -34,7 +38,7 @@ export function Tasks({ content, isCompleted }: TasksProps) {
         {content}
       </p>
 
-      <button>
+      <button onClick={() => handleRemoveTask(content)}>
         <Trash size={24} />
       </button>
     </div>
