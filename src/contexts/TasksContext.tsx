@@ -13,6 +13,7 @@ interface TasksContextData {
   tasks: Task[]
   addTask: (task: Task) => void
   removeTask: (content: string) => void
+  completeTask: (content: string) => void
 }
 
 export const TasksContext = createContext({} as TasksContextData)
@@ -32,7 +33,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
     const getTasks = [...tasks]
 
     const newTask = {
-      ...task
+      ...task,
     }
 
     getTasks.push(newTask)
@@ -53,8 +54,20 @@ export function TasksProvider({ children }: TasksProviderProps) {
     }
   }
 
+  const completeTask = (content: string) => {
+    const getTasks = [...tasks]
+    const taskIndex = getTasks.findIndex(task => task.content === content)
+
+    if (taskIndex >= 0) {
+      getTasks[taskIndex].isCompleted = true
+
+      setTasks(getTasks)
+      localStorage.setItem('@todo:tasks', JSON.stringify(getTasks))
+    }
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks, addTask, removeTask }}>
+    <TasksContext.Provider value={{ tasks, addTask, removeTask, completeTask }}>
       {children}
     </TasksContext.Provider>
   )

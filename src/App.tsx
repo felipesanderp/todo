@@ -39,6 +39,7 @@ export function App() {
                 <Tasks 
                   key={task.content}
                   content={task.content}
+                  isCompleted={task.isCompleted}
                 />
               )
             })}
