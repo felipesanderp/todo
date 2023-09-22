@@ -63,7 +63,11 @@ export function TasksProvider({ children }: TasksProviderProps) {
     if (taskIndex >= 0) {
       getTasks[taskIndex].isCompleted = true
 
-      setTasks(getTasks)
+      const sortedBtIsCompleted = getTasks.sort(value => {
+        return value.isCompleted ? 1 : -1
+      })
+
+      setTasks(sortedBtIsCompleted)
       localStorage.setItem('@todo:tasks', JSON.stringify(getTasks))
     }
   }
