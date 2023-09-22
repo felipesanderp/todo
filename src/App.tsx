@@ -3,11 +3,16 @@ import './global.css';
 import { Header } from './components/Header';
 import { NewTaskForm } from './components/NewTaskForm';
 import { NoTasks } from './components/NoTasks';
-
-import styles from './App.module.css'
 import { Tasks } from './components/Tasks';
 
+import styles from './App.module.css'
+
+import { TasksContext } from './contexts/TasksContext';
+import { useContext } from 'react';
+
 export function App() {
+  const { tasks } = useContext(TasksContext)
+
   return (
     <div>
       <Header />
@@ -27,8 +32,20 @@ export function App() {
           </div>
         </div>
 
-        {/* <NoTasks /> */}
-        <Tasks />
+        {tasks.length > 0 ? (
+          <div>
+            {tasks.map((task) => {
+              return (
+                <Tasks 
+                  key={task.content}
+                  content={task.content}
+                />
+              )
+            })}
+          </div>
+        ) : (
+          <NoTasks />
+        )}
       </div>
     </div>
   )
