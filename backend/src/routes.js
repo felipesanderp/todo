@@ -19,5 +19,22 @@ export const routes = [
 
       return res.end(JSON.stringify(tasks))
     }
-  }
+  },
+  {
+    method: "POST",
+    path: buildRoutePath('/users'),
+    handler: (req, res) => {
+      const { title, description } = req.body
+
+      const task = {
+        id: randomUUID(),
+        title,
+        description
+      }
+
+      database.insert('tasks', task)
+
+      return res.writeHead(201).end(JSON.stringify(task))
+    }
+  },
 ]
