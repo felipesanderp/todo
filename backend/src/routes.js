@@ -27,10 +27,40 @@ export const routes = [
 
       const task = {
         id: randomUUID(),
-        description
+        description,
+        completed_at: null,
+        created_at: new Date(),
+        updated_at: new Date(),
       }
 
       database.insert('tasks', task)
+
+      return res.writeHead(201).end(JSON.stringify(task))
+    }
+  },
+  {
+    method: "PUT",
+    path: buildRoutePath('/users/:id'),
+    handler: (req, res) => {
+      const { id } = req.params
+      const { description } = req.body
+
+      if (!description) {
+        return res.writeHead(400).end(
+          JSON.stringify({ message: 'Description is required!' })
+        )
+      }
+
+      const [task] = database.select('tasks', { id })
+
+      if (!task) {
+        return res.writeHead(404).end()
+      }
+
+      database.update('tasks', id, {
+        description,
+        updated_at: new Date()
+      })
 
       return res.writeHead(201).end(JSON.stringify(task))
     }
