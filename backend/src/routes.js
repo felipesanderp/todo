@@ -13,7 +13,6 @@ export const routes = [
       const { search } = req.query
 
       const tasks = database.select('tasks', search ? {
-        title: search,
         description: search,
       } : null)
 
@@ -24,11 +23,10 @@ export const routes = [
     method: "POST",
     path: buildRoutePath('/users'),
     handler: (req, res) => {
-      const { title, description } = req.body
+      const { description } = req.body
 
       const task = {
         id: randomUUID(),
-        title,
         description
       }
 
