@@ -62,8 +62,6 @@ export function TasksProvider({ children }: TasksProviderProps) {
       }),
     })
 
-    console.log(response)
-
     dispatch(addNewTaskAction(await response.json()))
   }
 
