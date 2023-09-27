@@ -21,7 +21,7 @@ export function App() {
         <NewTaskForm />
 
         <div className={styles.tasksInfo}>
-          {/* <div className={styles.tasksCreated}>
+          <div className={styles.tasksCreated}>
             <p>Tarefas criadas</p>
             <span>{tasks.length}</span>
           </div>
@@ -29,9 +29,10 @@ export function App() {
           <div className={styles.tasksCompleted}>
             <p>Concluídas</p>
             <span>
-              {totalIsCompleted} de {tasks.length}
+              {tasks.filter((task) => task.completed_at !== null).length} de{' '}
+              {tasks.length}
             </span>
-          </div> */}
+          </div>
         </div>
 
         {tasks && tasks.length > 0 ? (
