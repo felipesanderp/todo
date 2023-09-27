@@ -8,7 +8,7 @@ const database = new Database()
 export const routes = [
   {
     method: "GET",
-    path: buildRoutePath('/users'),
+    path: buildRoutePath('/tasks'),
     handler: (req, res) => {
       const { search } = req.query
 
@@ -21,7 +21,7 @@ export const routes = [
   },
   {
     method: "POST",
-    path: buildRoutePath('/users'),
+    path: buildRoutePath('/tasks'),
     handler: (req, res) => {
       const { description } = req.body
 
@@ -40,7 +40,7 @@ export const routes = [
   },
   {
     method: "PUT",
-    path: buildRoutePath('/users/:id'),
+    path: buildRoutePath('/tasks/:id'),
     handler: (req, res) => {
       const { id } = req.params
       const { description } = req.body
@@ -67,7 +67,7 @@ export const routes = [
   },
   {
     method: "DELETE",
-    path: buildRoutePath('/users/:id'),
+    path: buildRoutePath('/tasks/:id'),
     handler: (req, res) => {
       const { id } = req.params
 
@@ -84,7 +84,7 @@ export const routes = [
   },
   {
     method: "PATCH",
-    path: buildRoutePath('/users/:id/complete'),
+    path: buildRoutePath('/tasks/:id/complete'),
     handler: (req, res) => {
       const { id } = req.params
 
