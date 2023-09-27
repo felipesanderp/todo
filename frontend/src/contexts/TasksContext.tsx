@@ -28,7 +28,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
   const { tasks } = tasksState
 
   useEffect(() => {
-    const getTasks = async () => {
+    async function getTasks() {
       const response = await fetch('http://localhost:3333/tasks', {
         method: 'GET',
       })
