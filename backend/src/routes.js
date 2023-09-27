@@ -10,11 +10,7 @@ export const routes = [
     method: "GET",
     path: buildRoutePath('/tasks'),
     handler: (req, res) => {
-      const { search } = req.query
-
-      const tasks = database.select('tasks', search ? {
-        description: search,
-      } : null)
+      const tasks = database.select('tasks')
 
       return res.end(JSON.stringify(tasks))
     }
