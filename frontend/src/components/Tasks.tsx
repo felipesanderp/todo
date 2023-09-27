@@ -1,43 +1,41 @@
-import { ChangeEvent, useContext } from 'react'
+// import { ChangeEvent, useContext } from 'react'
 import { Trash } from 'phosphor-react'
 
-import { TasksContext } from '../contexts/TasksContext'
+// import { TasksContext } from '../contexts/TasksContext'
 
 import styles from './Tasks.module.css'
 
 interface TasksProps {
-  content: string
-  isCompleted: boolean
+  description: string
+  // completed_at: Date | null
 }
 
-export function Tasks({ content, isCompleted }: TasksProps) {
-  const { completeTask, removeTask } = useContext(TasksContext)
+export function Tasks({ description }: TasksProps) {
+  // // const { completeTask, removeTask } = useContext(TasksContext)
 
-  function handleRadioInputChange(event: ChangeEvent<HTMLInputElement>) {
-    completeTask(event.target.value)
-  }
+  // function handleRadioInputChange(event: ChangeEvent<HTMLInputElement>) {
+  // //   completeTask(event.target.value)
+  // // }
 
-  function handleRemoveTask(content: string) {
-    removeTask(content)
-  }
+  // function handleRemoveTask(content: string) {
+  //   // removeTask(content)
+  // }
 
   return (
     <div className={styles.tasks}>
       <input
         type="radio"
-        value={content}
-        name={content}
-        id={content}
-        onChange={handleRadioInputChange}
-        checked={isCompleted}
+        value={description}
+        name={description}
+        id={description}
+        // onChange={handleRadioInputChange}
+        // checked={isCompleted}
       />
-      <label htmlFor={content} id="label" />
+      <label htmlFor={description} id="label" />
 
-      <p className={isCompleted ? styles.taskCompleted : styles.content}>
-        {content}
-      </p>
+      <p className={styles.content}>{description}</p>
 
-      <button onClick={() => handleRemoveTask(content)}>
+      <button>
         <Trash size={24} />
       </button>
     </div>

@@ -13,10 +13,7 @@ export function NewTaskForm() {
   function handleAddNewTask(event: FormEvent) {
     event.preventDefault()
 
-    addTask({
-      content: newTaskText,
-      isCompleted: false,
-    })
+    addTask(newTaskText)
     setNewTaskText('')
   }
 

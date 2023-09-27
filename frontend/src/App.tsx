@@ -11,7 +11,7 @@ import { TasksContext } from './contexts/TasksContext'
 import { useContext } from 'react'
 
 export function App() {
-  const { tasks, totalIsCompleted } = useContext(TasksContext)
+  const { tasks } = useContext(TasksContext)
 
   return (
     <div>
@@ -21,7 +21,7 @@ export function App() {
         <NewTaskForm />
 
         <div className={styles.tasksInfo}>
-          <div className={styles.tasksCreated}>
+          {/* <div className={styles.tasksCreated}>
             <p>Tarefas criadas</p>
             <span>{tasks.length}</span>
           </div>
@@ -31,19 +31,13 @@ export function App() {
             <span>
               {totalIsCompleted} de {tasks.length}
             </span>
-          </div>
+          </div> */}
         </div>
 
-        {tasks.length > 0 ? (
+        {tasks && tasks.length > 0 ? (
           <div>
             {tasks.map((task) => {
-              return (
-                <Tasks
-                  key={task.content}
-                  content={task.content}
-                  isCompleted={task.isCompleted}
-                />
-              )
+              return <Tasks key={task.id} description={task.description} />
             })}
           </div>
         ) : (
