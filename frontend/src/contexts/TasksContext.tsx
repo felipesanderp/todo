@@ -4,6 +4,7 @@ import {
   ActionsTypes,
   addNewTaskAction,
   markTaskAsCompletedAction,
+  removeTaskAction,
 } from '../reducers/tasks/actions'
 
 interface CreateNewTask {
@@ -14,8 +15,7 @@ interface TasksContextType {
   tasks: Task[]
   addNewTask: (data: CreateNewTask) => void
   markTaskAsCompleted: (id: string) => void
-  // removeTask: (content: string) => void
-  // totalIsCompleted: number
+  removeTask: (id: string) => void
 }
 
 interface TasksProviderProps {
@@ -75,8 +75,18 @@ export function TasksProvider({ children }: TasksProviderProps) {
     dispatch(markTaskAsCompletedAction(id))
   }
 
+  async function removeTask(id: string) {
+    await fetch(`http://localhost:3333/tasks/${id}`, {
+      method: 'DELETE',
+    })
+
+    dispatch(removeTaskAction(id))
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks, addNewTask, markTaskAsCompleted }}>
+    <TasksContext.Provider
+      value={{ tasks, addNewTask, markTaskAsCompleted, removeTask }}
+    >
       {children}
     </TasksContext.Provider>
   )

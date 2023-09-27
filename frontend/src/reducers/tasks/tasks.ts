@@ -38,6 +38,19 @@ export function tasksReducer(state: TasksState, action: any) {
         draft.tasks[currentTaskIndex].completed_at = new Date()
       })
     }
+    case ActionsTypes.REMOVE_TASK: {
+      const currentTaskIndex = state.tasks.findIndex((task) => {
+        return task.id === action.payload.id
+      })
+
+      if (currentTaskIndex < 0) {
+        return state
+      }
+
+      return produce(state, (draft) => {
+        draft.tasks.splice(currentTaskIndex, 1)
+      })
+    }
     default:
       return state
   }
