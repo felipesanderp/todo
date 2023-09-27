@@ -8,12 +8,14 @@ import { TasksContext } from '../contexts/TasksContext'
 export function NewTaskForm() {
   const [newTaskText, setNewTaskText] = useState('')
 
-  const { addTask } = useContext(TasksContext)
+  const { addNewTask } = useContext(TasksContext)
 
   function handleAddNewTask(event: FormEvent) {
     event.preventDefault()
 
-    addTask(newTaskText)
+    addNewTask({
+      description: newTaskText,
+    })
     setNewTaskText('')
   }
 

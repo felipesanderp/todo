@@ -1,11 +1,14 @@
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
-import { api } from '../lib/axios'
 import { Task, tasksReducer } from '../reducers/tasks/tasks'
-import { ActionsTypes } from '../reducers/tasks/actions'
+import { ActionsTypes, addNewTaskAction } from '../reducers/tasks/actions'
+
+interface CreateNewTask {
+  description: string
+}
 
 interface TasksContextType {
   tasks: Task[]
-  // addTask: (description: string) => void
+  addNewTask: (data: CreateNewTask) => void
   // removeTask: (content: string) => void
   // completeTask: (content: string) => void
   // totalIsCompleted: number
@@ -26,12 +29,16 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
   useEffect(() => {
     const getTasks = async () => {
-      const response = await api.get('/tasks')
+      const response = await fetch('http://localhost:3333/tasks', {
+        method: 'GET',
+      })
+
+      const data = await response.json()
 
       dispatch({
         type: ActionsTypes.GET_TASKS,
         payload: {
-          data: response.data,
+          data,
         },
       })
     }
@@ -39,7 +46,26 @@ export function TasksProvider({ children }: TasksProviderProps) {
     getTasks()
   }, [])
 
+  async function addNewTask(data: CreateNewTask) {
+    const newTask = {
+      description: data.description,
+    }
+
+    const response = await fetch('http://localhost:3333/tasks', {
+      method: 'POST',
+      body: JSON.stringify({
+        description: newTask.description,
+      }),
+    })
+
+    console.log(response)
+
+    dispatch(addNewTaskAction(await response.json()))
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks }}>{children}</TasksContext.Provider>
+    <TasksContext.Provider value={{ tasks, addNewTask }}>
+      {children}
+    </TasksContext.Provider>
   )
 }
