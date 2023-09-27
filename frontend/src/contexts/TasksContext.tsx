@@ -1,6 +1,10 @@
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { Task, tasksReducer } from '../reducers/tasks/tasks'
-import { ActionsTypes, addNewTaskAction } from '../reducers/tasks/actions'
+import {
+  ActionsTypes,
+  addNewTaskAction,
+  markTaskAsCompletedAction,
+} from '../reducers/tasks/actions'
 
 interface CreateNewTask {
   description: string
@@ -9,8 +13,8 @@ interface CreateNewTask {
 interface TasksContextType {
   tasks: Task[]
   addNewTask: (data: CreateNewTask) => void
+  markTaskAsCompleted: (id: string) => void
   // removeTask: (content: string) => void
-  // completeTask: (content: string) => void
   // totalIsCompleted: number
 }
 
@@ -63,8 +67,16 @@ export function TasksProvider({ children }: TasksProviderProps) {
     dispatch(addNewTaskAction(await response.json()))
   }
 
+  async function markTaskAsCompleted(id: string) {
+    await fetch(`http://localhost:3333/tasks/${id}/complete`, {
+      method: 'PATCH',
+    })
+
+    dispatch(markTaskAsCompletedAction(id))
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks, addNewTask }}>
+    <TasksContext.Provider value={{ tasks, addNewTask, markTaskAsCompleted }}>
       {children}
     </TasksContext.Provider>
   )

@@ -25,6 +25,19 @@ export function tasksReducer(state: TasksState, action: any) {
       return produce(state, (draft) => {
         draft.tasks.push(action.payload.newTask)
       })
+    case ActionsTypes.MARK_TASK_AS_COMPLETED: {
+      const currentTaskIndex = state.tasks.findIndex((task) => {
+        return task.id === action.payload.id
+      })
+
+      if (currentTaskIndex < 0) {
+        return state
+      }
+
+      return produce(state, (draft) => {
+        draft.tasks[currentTaskIndex].completed_at = new Date()
+      })
+    }
     default:
       return state
   }

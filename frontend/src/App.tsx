@@ -37,7 +37,7 @@ export function App() {
         {tasks && tasks.length > 0 ? (
           <div>
             {tasks.map((task) => {
-              return <Tasks key={task.id} description={task.description} />
+              return <Tasks key={task.id} task={task} />
             })}
           </div>
         ) : (
