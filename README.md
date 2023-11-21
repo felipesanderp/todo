@@ -11,20 +11,9 @@
 
 Esse projeto foi desenvolvido como parte do curso [**Ignite**](https://www.rocketseat.com.br/ignite) da Rocketseat, com as seguintes tecnologias:
 
-- [Next.js](https://nextjs.org/)
-- [Chakra UI](https://chakra-ui.com/)
-- [ApexCharts.js](https://apexcharts.com/)
-- [mirajeJS](https://miragejs.com/)
-- [axios](https://github.com/axios/axios)
-- [React Hook Form](https://react-hook-form.com/)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [yup](https://github.com/jquense/yup)
-- [VSCode](https://code.visualstudio.com/)
 
 ## :sparkles: Features
-- [x] Cadastro de usuáario
-- [ ] Salvar usuários em uma base de dados
-- [ ] Login com usuário e senha
+
 
 ## :information_source: Como usar
 
