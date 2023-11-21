@@ -24,18 +24,21 @@ Além disto é bom ter um editor para trabalhar com o código, como [VSCode](htt
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/felipesanderp/dashgo.git
+$ git clone https://github.com/felipesanderp/todo.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd dashgo
+$ cd todo
 
-# Instale as dependências
-$ yarn
+# Acesse a pasta backend do projeto e execute o servidor de desenvolvimento
+$ cd backend && pnpm dev
 
-# Execute a aplicação em modo de desenvolvimento
-$ yarn dev
+# Em outro terminal, acesse a pasta frontend e instale as dependências
+$ cd frontend && pnpm i
 
-O servidor inciará na porta:3000 - acesse <http://localhost:3000> 
+# Ainda na pasta frontend, execute o servidor de desenvolvimento
+$ pnpm dev
+
+O servidor inciará na porta:5173 - acesse <http://localhost:5173> 
 ```
 
 ## :memo: License
