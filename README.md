@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido como parte do curso [**Ignite**](https://www.rocke
 - [React](https://pt-br.legacy.reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [Immer JS](https://github.com/immerjs/immer)
-- [Phosphor Icons/Reat](https://phosphoricons.com/)
+- [Phosphor Icons/React](https://phosphoricons.com/)
 
 ## :sparkles: Features
 
