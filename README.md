@@ -23,6 +23,10 @@ Esse projeto foi desenvolvido como parte do curso [**Ignite**](https://www.rocke
 
 ## :sparkles: Features
 
+- [x] Listar _todos_
+- [x] Adiconar _todo_
+- [x] Marcar _todo_ como concluído
+- [x] Remover _todo_
 
 ## :information_source: Como usar
 
