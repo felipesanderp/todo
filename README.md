@@ -15,6 +15,12 @@ Simple todo app
 
 Esse projeto foi desenvolvido como parte do curso [**Ignite**](https://www.rocketseat.com.br/ignite) da Rocketseat, com as seguintes tecnologias:
 
+- [Node.js](https://nodejs.org/en)
+- [React](https://pt-br.legacy.reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Immer JS](https://github.com/immerjs/immer)
+- [Phosphor Icons/Reat](https://phosphoricons.com/)
+- 
 
 ## :sparkles: Features
 
